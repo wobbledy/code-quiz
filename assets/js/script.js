@@ -1,13 +1,13 @@
 var timerEl = document.querySelector(".timer-count");
+var questionEl = document.querySelector(".question");
+var answersEl = document.querySelector(".answers");
+var startButton = document.querySelector(".start-button");
+
 var timer;
 var timerCount;
 var score;
 var questions;
-
-var questionEl = document.querySelector(".question");
-var answersEl = document.querySelector(".answers");
-
-var startButton = document.querySelector(".start-button");
+var questionAsked = ["Commonly used data types DO NOT include: ", "The condition in an if / else statement is enclosed within ______.", "Arrays in JavaScript can be used to store ______.", "String values must be enclosed within ______ when being assigned to variables.", "A very useful tool used during development and debugging for printing content to the debugger is: "];
 
 
 var button1 = document.createElement("button");
@@ -18,13 +18,19 @@ var button4 = document.createElement("button");
 function startGame() {
     timerCount = 75;
     questions = 0;
-    startTimer();
+    score = 0;
 
-    askQuestion();
+    startTimer();
+    questionOne();
 }
 
-function endScreen() {
-    //creates the last screen to save stuff
+function endGame() {
+    questionEl.textContent = "All Done!";
+    answersEl.textContent = "Your final score is " + score;
+    var display = document.createElement("p");
+    display.textContent = "";
+    answersEl.append(display);
+    clearInterval(timer);
 }
 
 //Sets the Timer to Countdown Every Second
@@ -34,15 +40,15 @@ function startTimer() {
         timerEl.textContent = "Time: " + timerCount;
         
         if (timerCount === 0) {
-            clearInterval(timer)
-            endScreen();
+            clearInterval(timer);
+            endGame();
         }
 
     },1000);
 }
 
 function correctAnswer() {
-    score = score + 1;
+    score = score + 10;
     questions++;
     
     if (questions === 1) {
@@ -51,21 +57,25 @@ function correctAnswer() {
         questionThree();
     } else if (questions === 3) {
         questionFour();
-    } else {
+    } else if (questions === 4){
         questionFive();
+    } else {
+        endGame();
     }
+
+
 }
 
 function wrongAnswer() {
     var display = document.createElement("p");
-    display.textContent = "Wrong!"
+    display.textContent = "Wrong!";
     answersEl.append(display);
     timerCount = timerCount - 10;
 }
 
-function askQuestion() {
+function questionOne() {
     startButton.remove();
-    questionEl.textContent = "Commonly used data types DO NOT include: ";
+    questionEl.textContent = questionAsked[0];
     answersEl.textContent = "";
     answersEl.append(button1);
     button1.textContent = "1. strings";
@@ -88,7 +98,7 @@ function askQuestion() {
 
 function questionTwo() {
 
-    questionEl.textContent = "The condition in an if / else statement is enclosed within ______.";
+    questionEl.textContent = questionAsked[1];
     answersEl.textContent = "";
     answersEl.append(button1);
     button1.textContent = "1. quotes";
@@ -100,7 +110,7 @@ function questionTwo() {
     button4.textContent = "4. square brackets";
 
     var display = document.createElement("p");
-    display.textContent = "Correct!"
+    display.textContent = "Correct!";
     answersEl.append(display);
 
 
@@ -113,7 +123,7 @@ function questionTwo() {
 
 function questionThree() {
 
-    questionEl.textContent = "Arrays in JavaScript can be used to store ______.";
+    questionEl.textContent = questionAsked[2];
     answersEl.textContent = "";
     answersEl.append(button1);
     button1.textContent = "1. numbers and strings";
@@ -125,7 +135,7 @@ function questionThree() {
     button4.textContent = "4. all of the above";
 
     var display = document.createElement("p");
-    display.textContent = "Correct!"
+    display.textContent = "Correct!";
     answersEl.append(display);
 
 
@@ -138,7 +148,7 @@ function questionThree() {
 
 function questionFour() {
 
-    questionEl.textContent = "String values must be enclosed within ______ when being assigned to variables.";
+    questionEl.textContent = questionAsked[3];
     answersEl.textContent = "";
     answersEl.append(button1);
     button1.textContent = "1. commas";
@@ -150,7 +160,7 @@ function questionFour() {
     button4.textContent = "4. parentheses";
 
     var display = document.createElement("p");
-    display.textContent = "Correct!"
+    display.textContent = "Correct!";
     answersEl.append(display);
 
 
@@ -163,7 +173,7 @@ function questionFour() {
 
 function questionFive() {
 
-    questionEl.textContent = "A very useful tool used during development and debugging for printing content to the debugger is: ";
+    questionEl.textContent = questionAsked[4];
     answersEl.textContent = "";
     answersEl.append(button1);
     button1.textContent = "1. JavaScript";
@@ -175,7 +185,7 @@ function questionFive() {
     button4.textContent = "4. console log";
 
     var display = document.createElement("p");
-    display.textContent = "Correct!"
+    display.textContent = "Correct!";
     answersEl.append(display);
 
 
