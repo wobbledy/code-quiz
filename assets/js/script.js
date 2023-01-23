@@ -218,9 +218,36 @@ function questionFive() {
 
 }
 
+function resetHighscores () {
+    localStorage.setItem("Score", 0);
+
+    var ul = document.createElement("ul");
+    var li1 = document.createElement("li");
+    li1 = 0;
+    ul.append(li1);
+    answersEl.append(ul);
+}
+
 function showHighScores () {
     questionEl.textContent = "Highscores";
     answersEl.textContent = "";
+
+    var resetButton = document.createElement("button");
+    resetButton.textContent = "Reset Highscores";
+    resetButton.style.backgroundColor = "blueviolet";
+    resetButton.style.borderRadius = "8px";
+    resetButton.style.fontSize = "20px";
+    answersEl.append(resetButton);
+    resetButton.addEventListener("click", resetHighscores);
+
+    var goBack = document.createElement("button");
+    goBack.textContent = "Go Back";
+    goBack.style.backgroundColor = "blueviolet";
+    goBack.style.borderRadius = "8px";
+    goBack.style.fontSize = "20px";
+    answersEl.append(goBack);
+    goBack.onclick= history.back();
+
     var ul = document.createElement("ul");
     var li1 = document.createElement("li");
     li1 = localStorage.getItem("Score");
