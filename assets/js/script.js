@@ -1,7 +1,9 @@
+//Grabs elements that need to be manipulated later on
 var timerEl = document.querySelector(".timer-count");
 var questionEl = document.querySelector(".question");
 var answersEl = document.querySelector(".answers");
 var startButton = document.querySelector(".start-button");
+var highScores = document.querySelector(".high-scores");
 
 var timer;
 var timerCount;
@@ -31,6 +33,8 @@ function endGame() {
     display.textContent = "";
     answersEl.append(display);
     clearInterval(timer);
+
+    localStorage.setItem("Score", score);
 }
 
 //Sets the Timer to Countdown Every Second
@@ -214,5 +218,18 @@ function questionFive() {
 
 }
 
+function showHighScores () {
+    questionEl.textContent = "Highscores";
+    answersEl.textContent = "";
+    var ul = document.createElement("ul");
+    var li1 = document.createElement("li");
+    li1 = localStorage.getItem("Score");
+    ul.append(li1);
+    answersEl.append(ul);
+    clearInterval(timer);
+
+}
+
 //Adds an Event Listener to the Start Game button so it will start the game when clicked
 startButton.addEventListener("click", startGame);
+highScores.addEventListener("click", showHighScores);

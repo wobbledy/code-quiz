@@ -37,3 +37,12 @@ p {
     font-size: 20px;
 
 }
+
+.high-scores {
+    background-color: blueviolet;
+    border-radius: 8px;
+    margin-top: 0px;
+    font-size: 17px;
+    padding: 5px;
+    text-align: center;
+}
