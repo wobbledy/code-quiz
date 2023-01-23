@@ -68,9 +68,11 @@ function correctAnswer() {
 
 function wrongAnswer() {
     var display = document.createElement("p");
+    display.style.fontSize = "20px";
     display.textContent = "Wrong!";
     answersEl.append(display);
     timerCount = timerCount - 10;
+    score = score - 10;
 }
 
 function questionOne() {
@@ -79,11 +81,23 @@ function questionOne() {
     answersEl.textContent = "";
     answersEl.append(button1);
     button1.textContent = "1. strings";
+    button1.style.backgroundColor = "blueviolet";
+    button1.style.borderRadius = "8px";
+    button1.style.fontSize = "20px";
     answersEl.append(button2);
     button2.textContent = "2. booleans";
+    button2.style.backgroundColor = "blueviolet";
+    button2.style.borderRadius = "8px";
+    button2.style.fontSize = "20px";
     answersEl.append(button3);
+    button3.style.backgroundColor = "blueviolet";
+    button3.style.borderRadius = "8px";
+    button3.style.fontSize = "20px";
     button3.textContent = "3. alerts";
     answersEl.append(button4);
+    button4.style.backgroundColor = "blueviolet";
+    button4.style.borderRadius = "8px";
+    button4.style.fontSize = "20px";
     button4.textContent = "4. numbers";
 
 
@@ -110,6 +124,7 @@ function questionTwo() {
     button4.textContent = "4. square brackets";
 
     var display = document.createElement("p");
+    display.style.fontSize = "20px";
     display.textContent = "Correct!";
     answersEl.append(display);
 
@@ -135,6 +150,7 @@ function questionThree() {
     button4.textContent = "4. all of the above";
 
     var display = document.createElement("p");
+    display.style.fontSize = "20px";
     display.textContent = "Correct!";
     answersEl.append(display);
 
@@ -160,6 +176,7 @@ function questionFour() {
     button4.textContent = "4. parentheses";
 
     var display = document.createElement("p");
+    display.style.fontSize = "20px";
     display.textContent = "Correct!";
     answersEl.append(display);
 
@@ -185,6 +202,7 @@ function questionFive() {
     button4.textContent = "4. console log";
 
     var display = document.createElement("p");
+    display.style.fontSize = "20px";
     display.textContent = "Correct!";
     answersEl.append(display);
 
